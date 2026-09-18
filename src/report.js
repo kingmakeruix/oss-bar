@@ -47,3 +47,22 @@ export function renderReport(username, rows, target = ACTIVE_CONTRIBUTOR_BAR) {
   }
   return lines.join('\n');
 }
+
+/** List external PRs as `title` + `html_url` lines (own repos excluded). */
+export function renderList(items, username) {
+  const lower = username.toLowerCase();
+  const lines = ['PRs:'];
+  let count = 0;
+  for (const item of items) {
+    const fullName = repoFullName(item.repository_url);
+    if (fullName.toLowerCase().startsWith(`${lower}/`)) {
+      continue;
+    }
+    lines.push(`  ${item.title}  ${item.html_url}`);
+    count += 1;
+  }
+  if (count === 0) {
+    lines.push('  (none)');
+  }
+  return lines.join('\n');
+}

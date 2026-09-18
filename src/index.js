@@ -1,9 +1,9 @@
 #!/usr/bin/env node
 import { searchMergedPRs } from './github.js';
-import { aggregateExternalPRs, renderReport } from './report.js';
+import { aggregateExternalPRs, renderList, renderReport, totalCount } from './report.js';
 
 function usage() {
-  console.log('Usage: oss-bar --user <github-username> [--target <n>]');
+  console.log('Usage: oss-bar --user <github-username> [--target <n>] [--json] [--list]');
   console.log('Env: GH_TOKEN or GITHUB_TOKEN (recommended, avoids rate limits)');
 }
 
@@ -16,6 +16,10 @@ function parseArgs(argv) {
       args.target = Number(argv[(i += 1)]);
     } else if (argv[i] === '--help' || argv[i] === '-h') {
       args.help = true;
+    } else if (argv[i] === '--json') {
+      args.json = true;
+    } else if (argv[i] === '--list') {
+      args.list = true;
     }
   }
   return args;
@@ -32,4 +36,12 @@ const token = process.env.GH_TOKEN ?? process.env.GITHUB_TOKEN;
 
 const items = await searchMergedPRs(args.user, since, { token });
 const rows = aggregateExternalPRs(items, args.user);
-console.log(renderReport(args.user, rows, args.target));
+if (args.json) {
+  console.log(JSON.stringify({ user: args.user, target: args.target, total: totalCount(rows), rows }));
+} else {
+  console.log(renderReport(args.user, rows, args.target));
+}
+if (args.list) {
+  console.log('');
+  console.log(renderList(items, args.user));
+}

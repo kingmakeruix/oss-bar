@@ -22,6 +22,12 @@ oss-bar --user kingmakeruix
 
 # Custom target
 oss-bar --user kingmakeruix --target 20
+
+# JSON output: { user, target, total, rows }
+oss-bar --user kingmakeruix --json
+
+# Include per-PR title + URL list alongside the summary
+oss-bar --user kingmakeruix --list
 ```
 
 Set `GH_TOKEN` (or `GITHUB_TOKEN`) to avoid GitHub API rate limits:
