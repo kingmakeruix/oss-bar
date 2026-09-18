@@ -9,6 +9,26 @@
   "scripts": {
     "test": "node --test test/*.test.js"
   },
+  "files": [
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "cli",
+    "github",
+    "open-source",
+    "hacktoberfest"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingmakeruix/oss-bar.git"
+  },
+  "homepage": "https://github.com/kingmakeruix/oss-bar#readme",
+  "author": "kingmakeruix",
+  "bugs": {
+    "url": "https://github.com/kingmakeruix/oss-bar/issues"
+  },
   "engines": {
     "node": ">=20"
   },

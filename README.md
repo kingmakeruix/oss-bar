@@ -28,6 +28,15 @@ oss-bar --user kingmakeruix --json
 
 # Include per-PR title + URL list alongside the summary
 oss-bar --user kingmakeruix --list
+
+# Self-contained HTML report page
+oss-bar --user kingmakeruix --html report.html
+
+# Owned repos with stars/forks (maintainer signals)
+oss-bar --user kingmakeruix --maintainer
+
+# Record this run and show the trend since the previous run
+oss-bar --user kingmakeruix --weekly
 ```
 
 Set `GH_TOKEN` (or `GITHUB_TOKEN`) to avoid GitHub API rate limits:
