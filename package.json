@@ -1,0 +1,16 @@
+{
+  "name": "oss-bar",
+  "version": "0.1.0",
+  "description": "Track your merged-PR progress toward open-source program bars (Claude for OSS, Codex for OSS)",
+  "type": "module",
+  "bin": {
+    "oss-bar": "./src/index.js"
+  },
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "license": "MIT"
+}
