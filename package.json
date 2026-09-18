@@ -4,7 +4,7 @@
   "description": "Track your merged-PR progress toward open-source program bars (Claude for OSS, Codex for OSS)",
   "type": "module",
   "bin": {
-    "oss-bar": "./src/index.js"
+    "oss-bar": "src/index.js"
   },
   "scripts": {
     "test": "node --test test/*.test.js"
